@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.loginwithmybatis.mapper.MemberMapper">
+<insert id="signUp" parameterType="com.example.loginwithmybatis.member.MemberDTO">
+    INSERT INTO
+            memberTable(name,
+                       phone,
+                       email,
+                       password,
+                       gender)values(
+                                     #{name}
+                                     ,#{phone}
+                                     ,#{email}
+                                     ,#{password}
+                                     ,#{gender}
+                                        )
+</insert>
+    <select id="login" parameterType="com.example.loginwithmybatis.member.MemberDTO" resultType="com.example.loginwithmybatis.member.MemberDTO">
+        SELECT email,password
+            FROM memberTable
+WHERE
+    email=#{email} and password = #{password}
+    </select>
+</mapper>
